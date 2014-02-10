@@ -12,17 +12,17 @@ describe('Controller: MessageCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
     $httpBackend = _$httpBackend_;
-    $httpBackend.expectGET('/api/awesomeThings')
-      .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
+    $httpBackend.expectGET('/api/message')
+      .respond("Hello World!");
     scope = $rootScope.$new();
     MessageCtrl = $controller('MessageCtrl', {
       $scope: scope
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings).toBeUndefined();
+  it('should attach a list of message to the scope', function () {
+    expect(scope.message).toBeUndefined();
     $httpBackend.flush();
-    expect(scope.awesomeThings.length).toBe(4);
+    expect(scope.message).toBe("Hello World!");
   });
 });
